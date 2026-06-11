@@ -10,7 +10,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:url("photos/background.jpg");
+    background:url("background.jpg");
     background-size:cover;
     background-position:center;
     overflow:hidden;
@@ -109,7 +109,7 @@ button{
     padding:20px;
     border-radius:20px;
 
-    background:url("photos/aboutbg.jpg");
+    background:url("aboutbg.jpg");
     background-size:cover;
     background-position:center;
 
@@ -141,7 +141,7 @@ button{
 }
 #aboutPage{
     min-height:100vh;
-    background:url("photos/background.jpg");
+    background:url("background.jpg");
     background-size:cover;
     background-position:center;
     padding:30px;
