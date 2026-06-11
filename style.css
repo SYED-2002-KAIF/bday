@@ -118,7 +118,8 @@ button{
     background-size:cover;
     background-position:center;
 
-    overflow:hidden;
+    max-height:70vh;
+    overflow:auto;
 
     color:white;
 
