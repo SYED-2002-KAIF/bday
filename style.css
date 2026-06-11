@@ -1,0 +1,173 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url("photos/background.jpg");
+    background-size:cover;
+    background-position:center;
+    overflow:hidden;
+    color:white;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(8px);
+}
+
+#tapScreen,
+#mainPage,
+#birthdayPage{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+#mainPage,
+#birthdayPage{
+    display:none;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    padding:25px;
+    border-radius:30px;
+    width:90%;
+    max-width:420px;
+    box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.frontPhoto,
+#slider{
+    width:280px;
+    height:380px;
+    object-fit:cover;
+    border-radius:25px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+button{
+    display:block;
+    width:280px;
+    margin:15px auto;
+    padding:15px;
+    border-radius:50px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+#yesBtn{
+    background:white;
+    color:black;
+}
+
+#noBtn{
+    background:transparent;
+    border:2px solid white;
+    color:white;
+    margin-top:20px;
+}
+
+#tapScreen h1{
+    font-size:55px;
+}
+
+#tapScreen p{
+    font-size:18px;
+    margin-top:10px;
+}
+#slider{
+    opacity:1;
+    transition:opacity 1s ease-in-out;
+}
+.aboutBox{
+    position:fixed;
+    left:20px;
+    top:50%;
+    transform:translateY(-50%);
+    width:280px;
+    padding:20px;
+    border-radius:20px;
+
+    background:url("photos/aboutbg.jpg");
+    background-size:cover;
+    background-position:center;
+
+    overflow:hidden;
+
+    color:white;
+
+    box-shadow:0 0 20px rgba(255,255,255,0.2);
+
+    z-index:10;
+}
+
+.aboutBox::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+}
+
+.aboutBox h3,
+.aboutBox p{
+    position:relative;
+    z-index:2;
+}
+
+.aboutBox p{
+    font-size:13px;
+    line-height:1.6;
+}
+#aboutPage{
+    min-height:100vh;
+    background:url("photos/background.jpg");
+    background-size:cover;
+    background-position:center;
+    padding:30px;
+    color:white;
+}
+
+.aboutCard{
+    max-width:900px;
+    margin:auto;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:25px;
+    line-height:1.8;
+}
+
+.aboutCard h2{
+    margin-bottom:15px;
+}
+.thoughtBtn{
+    background:#ff4d88;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:15px;
+}
