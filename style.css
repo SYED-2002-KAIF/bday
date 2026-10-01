@@ -1,180 +1,448 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:url("background.jpg");
-    background-size:cover;
-    background-position:center;
-    overflow:hidden;
-    color:white;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.55);
-    backdrop-filter:blur(8px);
+body {
+    background: url("background.jpg") center center / cover no-repeat fixed;
+    color: white;
 }
 
-#tapScreen,
-#mainPage,
-#birthdayPage{
-    position:relative;
-    z-index:2;
-    text-align:center;
+/* Dark + slightly blurred background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -15px;
+    background: url("background.jpg") center center / cover no-repeat;
+    filter: blur(7px);
+    transform: scale(1.05);
+    z-index: -2;
 }
 
-#mainPage,
-#birthdayPage{
-    display:none;
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
 }
 
-.card{
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    padding:15px;
-    margin-top:-20px;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateX(-5px);
-    border-radius:30px;
-    width:90%;
-    max-width:420px;
-    box-shadow:0 0 25px rgba(255,255,255,0.2);
+
+/* =========================
+   TAP SCREEN
+========================= */
+
+#tapScreen {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
 }
 
-.frontPhoto,
-#slider{
-    width:220px;
-    height:300px;
-    object-fit:cover;
-    border-radius:25px;
-    margin-bottom:15px;
-    margin-top:20px;
+#tapScreen .frontPhoto {
+    width: 230px;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.35);
+
+    margin-bottom: 25px;
 }
 
-h1{
-    font-size:42px;
-    margin-bottom:10px;
+#tapScreen h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+    text-shadow: 0 3px 15px black;
 }
 
-h2{
-    margin-bottom:15px;
+#tapScreen p {
+    font-size: 18px;
+    text-shadow: 0 2px 10px black;
 }
 
-button{
-    display:block;
-    width:280px;
-    margin:15px auto;
-    padding:15px;
-    border-radius:50px;
-    font-size:22px;
-    cursor:pointer;
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+#mainPage {
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+    z-index: 5;
 }
 
-#yesBtn{
-    background:white;
-    color:black;
+#mainPage .card {
+    width: 90%;
+    max-width: 420px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    padding: 25px 18px;
+
+    border-radius: 30px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-#noBtn{
-    background:transparent;
-    border:2px solid white;
-    color:white;
-    margin-top:20px;
+#mainPage .frontPhoto {
+    width: 200px;
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    margin-bottom: 15px;
 }
 
-#tapScreen h1{
-    font-size:55px;
+#mainPage h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
 }
 
-#tapScreen p{
-    font-size:18px;
-    margin-top:10px;
-}
-#slider{
-    opacity:1;
-    transition:opacity 1s ease-in-out;
-}
-.aboutBox{
-    position:fixed;
-    left:20px;
-    top:50%;
-    transform:translateY(-50%);
-    width:280px;
-    padding:20px;
-    border-radius:20px;
-
-    background:url("aboutbg.jpg");
-    background-size:cover;
-    background-position:center;
-
-    height:70vh;
-    overflow:scroll;
-    -webkit-overflow-scrolling:touch;
-
-    color:white;
-
-    box-shadow:0 0 20px rgba(255,255,255,0.2);
-
-    z-index:10;
+#mainPage h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
 }
 
-.aboutBox::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.7);
+#mainPage h3 {
+    font-size: 18px;
 }
 
-.aboutBox h3,
-.aboutBox p{
-    position:relative;
-    z-index:2;
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    width: 260px;
+
+    display: block;
+
+    margin: 15px auto;
+
+    padding: 14px;
+
+    border-radius: 50px;
+
+    font-size: 20px;
+
+    border: none;
+
+    cursor: pointer;
 }
 
-.aboutBox p{
-    font-size:13px;
-    line-height:1.6;
-}
-#aboutPage{
-    min-height:100vh;
-    background:url("background.jpg");
-    background-size:cover;
-    background-position:center;
-    padding:30px;
-    color:white;
+#yesBtn {
+    background: white;
+    color: #ff3f7f;
+
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.4);
 }
 
-.aboutCard{
-    max-width:900px;
-    margin:auto;
-    background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(10px);
-    padding:30px;
-    border-radius:25px;
-    line-height:1.8;
+#noBtn {
+    background: transparent;
+
+    border: 2px solid white;
+
+    color: white;
 }
 
-.aboutCard h2{
-    margin-bottom:15px;
+
+/* =========================
+   BIRTHDAY SLIDESHOW
+========================= */
+
+#birthdayPage {
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 20;
+
+    background: black;
 }
-.thoughtBtn{
-    background:#ff4d88;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    font-size:18px;
-    cursor:pointer;
-    margin-top:15px;
+
+#birthdayPage .card {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: transparent;
+}
+
+#slider {
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition: opacity 0.5s ease;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+}
+
+
+/* Text over slideshow */
+
+#birthdayPage h1,
+#birthdayPage h2,
+#birthdayPage p {
+    position: relative;
+
+    z-index: 3;
+
+    text-shadow:
+        0 2px 10px black,
+        0 2px 20px black;
+}
+
+#birthdayPage h1 {
+    margin-top: 60vh;
+
+    font-size: 35px;
+}
+
+#birthdayPage h2 {
+    font-size: 22px;
+}
+
+#birthdayPage p {
+    font-size: 16px;
+}
+
+
+/* =========================
+   FINAL ABOUT / MESSAGE PAGE
+========================= */
+
+#aboutPage {
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 50;
+
+    background:
+        url("message-photo.jpg")
+        center center / cover no-repeat;
+
+    overflow-y: auto;
+
+    padding: 30px 20px;
+}
+
+
+/* Dark overlay */
+
+#aboutPage::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: -1;
+}
+
+
+/* Message */
+
+.aboutCard {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 20px auto 50px;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(4px);
+
+    text-align: center;
+
+    line-height: 1.7;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.aboutCard h2 {
+    font-size: 32px;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 2px 10px black;
+}
+
+.aboutCard p {
+    font-size: 17px;
+
+    text-shadow:
+        0 2px 7px black;
+}
+
+
+/* Thoughts button */
+
+.thoughtBtn {
+    background: rgba(255, 77, 136, 0.9);
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    font-size: 17px;
+
+    margin-top: 20px;
+}
+
+
+/* Thoughts */
+
+#thoughtsBox {
+    margin-top: 20px;
+}
+
+#thoughtsBox p {
+    margin: 10px 0;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    #tapScreen h1 {
+        font-size: 38px;
+    }
+
+    #tapScreen p {
+        font-size: 16px;
+    }
+
+    #tapScreen .frontPhoto {
+        width: 200px;
+        height: 260px;
+    }
+
+    #mainPage .card {
+        width: 92%;
+        padding: 20px 15px;
+    }
+
+    #mainPage .frontPhoto {
+        width: 170px;
+        height: 220px;
+    }
+
+    #mainPage h1 {
+        font-size: 34px;
+    }
+
+    #mainPage h2 {
+        font-size: 22px;
+    }
+
+    #mainPage h3 {
+        font-size: 16px;
+    }
+
+    button {
+        width: 230px;
+        font-size: 18px;
+    }
+
+    #birthdayPage h1 {
+        font-size: 28px;
+    }
+
+    #birthdayPage h2 {
+        font-size: 19px;
+    }
+
+    .aboutCard {
+        padding: 20px 16px;
+    }
+
+    .aboutCard h2 {
+        font-size: 27px;
+    }
+
+    .aboutCard p {
+        font-size: 15px;
+    }
 }
